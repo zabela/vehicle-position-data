@@ -19,7 +19,7 @@ consumes:
 produces:
   - application/json
 paths:
-  /position:
+  /position/{vehicleId}:
     x-swagger-router-controller: position
     get:
       description: Get the last position of a certain vehicle
@@ -29,21 +29,25 @@ paths:
       operationId: getLastPosition
       parameters:
         - name: vehicleId
-          in: query
+          in: path
           description: vehicle identifier
           required: true
           type: string
       responses:
         "200":
-          description: Success
+          description: OK
           schema:
             # a pointer to a definition
             $ref: "#/definitions/Position"
+        "400":
+          description: vehicle not found
         # responses may fall through to errors
         default:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+  /position:
+    x-swagger-router-controller: position
     post:
       description: Add a new vehicle position data
       tags:
@@ -57,8 +61,8 @@ paths:
            schema:
             $ref: '#/definitions/Position'
       responses:
-        "200":
-          description: Success
+        "201":
+          description: OK
           schema:
             # a pointer to a definition
             $ref: "#/definitions/SuccessResponse"
@@ -67,7 +71,7 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-  /session:
+  /session/{sessionId}:
     x-swagger-router-controller: session
     get:
       description: Get a single session as an ordered list of the received positions by timestamp
@@ -77,22 +81,24 @@ paths:
       operationId: getSession
       parameters:
         - name: sessionId
-          in: query
+          in: path
           description: session identifier
           required: true
           type: string
       responses:
         "200":
-          description: Success
+          description: OK
           schema:
             # a pointer to a definition
             $ref: "#/definitions/Session"
+        "400":
+          description: session not found
         # responses may fall through to errors
         default:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-  /sessions:
+  /sessions/{vehicleId}:
     x-swagger-router-controller: session
     get:
       description: Get all sessions of a vehicle in correct ordering
@@ -102,16 +108,18 @@ paths:
       operationId: getSessions
       parameters:
         - name: vehicleId
-          in: query
+          in: path
           description: vehicle identifier
           required: true
           type: string
       responses:
         "200":
-          description: Success
+          description: OK
           schema:
             # a pointer to a definition
             $ref: "#/definitions/Session"
+        "400":
+          description: vehicle not found
         # responses may fall through to errors
         default:
           description: Error
@@ -152,7 +160,7 @@ definitions:
       heading:
         description: heading
         type: integer 
-      session:
+      session_id:
         description: session
         type: string 
     example:
@@ -160,6 +168,6 @@ definitions:
       latitude: 48.1167
       longitude: 11.54
       heading: 252
-      session: "6bc6a660dfef4010ded079865f358e30"
+      session_id: "6bc6a660dfef4010ded079865f358e30"
       
     

@@ -3,9 +3,12 @@
 var SwaggerExpress = require('swagger-express-mw');
 var app = require('express')();
 
+var data = [];
+
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./api/swagger/swagger.yaml');
+
 module.exports = app; // for testing
 
 var config = {
@@ -23,8 +26,13 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
 
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-  if (swaggerExpress.runner.swagger.paths['/']) {
-    console.log('try this:\nhttp://127.0.0.1:' + port + '/api-docs/#/ (in the browser)');
-    console.log('');
-  }
+  // set global variable with position data
+  app.set('data', data);
+
+  // to visualize the API
+  console.log('try this:\nhttp://127.0.0.1:' + port + '/api-docs/#/ (in the browser)');
+
 });
+
+
+

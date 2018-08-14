@@ -9,7 +9,7 @@ This is a web service that can receive vehicle position data. Data is defined by
 * latitude: double
 * longitude: double
 * heading: integer
-* session: string
+* session_id: string
 
 
 ## Instructions
@@ -29,12 +29,13 @@ swagger project start
 
 ## Assumptions
 
+* This API is only moduled to be used by a vehicle, and not an user
 * A position object is defined by:
     * timestamp: long
     * latitude: double
     * longitude: double
     * heading: integer
-    * session: string
+    * session_id: string
 * A session object is defined by an array of positions
 * A timestamp is an epoch timestamp
 * Correct ordering or ordered by timestamp means that the timestamps are arranged from the most recent to the oldest
