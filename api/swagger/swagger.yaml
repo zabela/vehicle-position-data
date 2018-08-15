@@ -47,6 +47,10 @@ paths:
           schema:
             # a pointer to a definition
             $ref: "#/definitions/Position"
+        "400":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/ErrorResponse"
         "401":
           description: Unauthorized
           schema:
@@ -57,10 +61,6 @@ paths:
             $ref: "#/definitions/ErrorResponse"
         "404":
           description: Not Found
-          schema:
-            $ref: "#/definitions/ErrorResponse"
-        "500":
-          description: Bad Request
           schema:
             $ref: "#/definitions/ErrorResponse"
         # responses may fall through other errors
@@ -88,6 +88,10 @@ paths:
           schema:
             # a pointer to a definition
             $ref: "#/definitions/SuccessResponse"
+        "400":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/ErrorResponse"
         "401":
           description: Unauthorized
           schema:
@@ -98,10 +102,6 @@ paths:
             $ref: "#/definitions/ErrorResponse"
         "404":
           description: Not Found
-          schema:
-            $ref: "#/definitions/ErrorResponse"
-        "500":
-          description: Bad Request
           schema:
             $ref: "#/definitions/ErrorResponse"
         # responses may fall through other errors
@@ -129,6 +129,10 @@ paths:
           schema:
             # a pointer to a definition
             $ref: "#/definitions/Session"
+        "400":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/ErrorResponse"
         "401":
           description: Unauthorized
           schema:
@@ -139,10 +143,6 @@ paths:
             $ref: "#/definitions/ErrorResponse"
         "404":
           description: Not Found
-          schema:
-            $ref: "#/definitions/ErrorResponse"
-        "500":
-          description: Bad Request
           schema:
             $ref: "#/definitions/ErrorResponse"
         # responses may fall through other errors
@@ -170,6 +170,10 @@ paths:
           schema:
             # a pointer to a definition
             $ref: "#/definitions/Session"
+        "400":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/ErrorResponse"
         "401":
           description: Unauthorized
           schema:
@@ -180,10 +184,6 @@ paths:
             $ref: "#/definitions/ErrorResponse"
         "404":
           description: Not Found
-          schema:
-            $ref: "#/definitions/ErrorResponse"
-        "500":
-          description: Bad Request
           schema:
             $ref: "#/definitions/ErrorResponse"
         # responses may fall through other errors

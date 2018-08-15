@@ -23,7 +23,7 @@ function getLastPosition(req, res) {
         // vehicle not found
         res.status(404).json('Vehicle not found!');
         return;
-    }
+    } 
 
     // filters the array by "vehicle_id"
     // and sorts it by timestamp: from the most recent to the oldest
@@ -38,6 +38,12 @@ function addPosition(req, res) {
 
     // get the position
     var position = req.swagger.params.position.value;
+
+    if (!position.timestamp || !position.vehicle_id || !position.latitude || 
+        !position.longitude || !position.heading || !position.session_id) {
+        res.status(400).json('Please provide valid a position!');
+        return;
+    }
 
     // get the data global variable and
     // add to the storage

@@ -7,9 +7,16 @@ describe('controllers', function() {
   describe('position', function() {
 
     var data = [];
-    const position = {
+    const validPosition = {
       "timestamp": 1519990621965,
       "vehicle_id": "WLQBNAL7EM14E3N",
+      "latitude": 48.1167,
+      "longitude": 11.54,
+      "heading": 252,
+      "session_id": "6bc6a660dfef4010ded079865f358e31"
+    };
+    const invalidPosition = {
+      "timestamp": 1519990621965,
       "latitude": 48.1167,
       "longitude": 11.54,
       "heading": 252,
@@ -36,7 +43,7 @@ describe('controllers', function() {
 
         request(server)
           .post('/position')
-          .send(position)
+          .send(validPosition)
           .set('Accept', 'application/json')
           .expect('Content-Type', /json/)
           .expect(401, done);
@@ -46,10 +53,20 @@ describe('controllers', function() {
 
         request(server)
           .post('/position?api_key=1234')
-          .send(position)
+          .send(validPosition)
           .set('Accept', 'application/json')
           .expect('Content-Type', /json/)
           .expect(201, done);
+      });
+
+      it('respond with 400 bad request', function(done) {
+
+        request(server)
+          .post('/position?api_key=1234')
+          .send(invalidPosition)
+          .set('Accept', 'application/json')
+          .expect('Content-Type', /json/)
+          .expect(400, done);
       });
 
     });

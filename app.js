@@ -25,7 +25,7 @@ config.swaggerSecurityHandlers = {
 
     if (!scopesOrApiKey) {
       // no authentication provided
-      var err = new Error('Provide Authentication');
+      var err = new Error('Please provide authentication!');
       err.statusCode=401;
       cb(err);
 
@@ -34,7 +34,7 @@ config.swaggerSecurityHandlers = {
       cb();
     } else {
       // wrong authentication provided
-      var err = new Error('Provide Valid Authentication');
+      var err = new Error('Please provide valid authentication!');
       err.statusCode=401;
       cb(err);
     }
