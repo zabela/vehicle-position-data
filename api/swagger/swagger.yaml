@@ -18,6 +18,14 @@ consumes:
 # format of the responses to the client (Accepts)
 produces:
   - application/json
+securityDefinitions:
+  api_key:
+    type: apiKey
+    in: query
+    name: api_key
+# To apply Basic auth to the whole API:
+security:
+  - api_key: []
 paths:
   /position/{vehicleId}:
     x-swagger-router-controller: position
@@ -39,11 +47,23 @@ paths:
           schema:
             # a pointer to a definition
             $ref: "#/definitions/Position"
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "403":
+          description: Forbidden
+          schema:
+            $ref: "#/definitions/ErrorResponse"
         "404":
           description: Not Found
           schema:
             $ref: "#/definitions/ErrorResponse"
-        # responses may fall through to errors
+        "500":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        # responses may fall through other errors
         default:
           description: Error
           schema:
@@ -68,7 +88,23 @@ paths:
           schema:
             # a pointer to a definition
             $ref: "#/definitions/SuccessResponse"
-        # responses may fall through to errors
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "403":
+          description: Forbidden
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "404":
+          description: Not Found
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "500":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        # responses may fall through other errors
         default:
           description: Error
           schema:
@@ -93,11 +129,23 @@ paths:
           schema:
             # a pointer to a definition
             $ref: "#/definitions/Session"
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "403":
+          description: Forbidden
+          schema:
+            $ref: "#/definitions/ErrorResponse"
         "404":
           description: Not Found
           schema:
             $ref: "#/definitions/ErrorResponse"
-        # responses may fall through to errors
+        "500":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        # responses may fall through other errors
         default:
           description: Error
           schema:
@@ -122,11 +170,23 @@ paths:
           schema:
             # a pointer to a definition
             $ref: "#/definitions/Session"
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "403":
+          description: Forbidden
+          schema:
+            $ref: "#/definitions/ErrorResponse"
         "404":
           description: Not Found
           schema:
             $ref: "#/definitions/ErrorResponse"
-        # responses may fall through to errors
+        "500":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        # responses may fall through other errors
         default:
           description: Error
           schema:
@@ -157,6 +217,9 @@ definitions:
       timestamp:
         description: timestamp
         type: integer
+      vehicle_id:
+        description: vehicle identifier
+        type: string 
       latitude:
         description: latitude
         type: number
@@ -167,10 +230,11 @@ definitions:
         description: heading
         type: integer 
       session_id:
-        description: session
+        description: session identifier
         type: string 
     example:
       timestamp: 1519990621975
+      vehicle_id: "WLQBNAL7EM14E3N"
       latitude: 48.1167
       longitude: 11.54
       heading: 252

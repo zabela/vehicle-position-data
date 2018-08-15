@@ -6,9 +6,19 @@ describe('controllers', function() {
 
   describe('position', function() {
 
+    var data = [];
+    const position = {
+      "timestamp": 1519990621965,
+      "vehicle_id": "WLQBNAL7EM14E3N",
+      "latitude": 48.1167,
+      "longitude": 11.54,
+      "heading": 252,
+      "session_id": "6bc6a660dfef4010ded079865f358e31"
+    };
+
     beforeEach(function() {
 
-      var data = [{
+      data = [{
         "timestamp": 1519990621975,
         "vehicle_id": "WLQBNAL7EM14E3N",
         "session_id": "6bc6a660dfef4010ded079865f358e30",
@@ -22,26 +32,24 @@ describe('controllers', function() {
 
     describe('POST /position', function() {
 
-      it('respond with 201 created', function(done) {
-
-        let data = {
-            "timestamp": 1519990621965,
-            "latitude": 48.1167,
-            "longitude": 11.54,
-            "heading": 252,
-            "session_id": "6bc6a660dfef4010ded079865f358e31"
-          }
+      it('respond with 401 unauthorized', function(done) {
 
         request(server)
           .post('/position')
-          .send(data)
+          .send(position)
           .set('Accept', 'application/json')
           .expect('Content-Type', /json/)
-          .expect(201)
-          .end((err) => {
-              if (err) return done(err);
-              done();
-          });
+          .expect(401, done);
+      });
+
+      it('respond with 201 created', function(done) {
+
+        request(server)
+          .post('/position?api_key=1234')
+          .send(position)
+          .set('Accept', 'application/json')
+          .expect('Content-Type', /json/)
+          .expect(201, done);
       });
 
     });
@@ -52,7 +60,7 @@ describe('controllers', function() {
       it('respond with json containing a single position', function(done) {
 
         request(server)
-          .get('/position/WLQBNAL7EM14E3N')
+          .get('/position/WLQBNAL7EM14E3N?api_key=1234')
           .set('Accept', 'application/json')
           .expect('Content-Type', /json/)
           .expect(200)
@@ -67,7 +75,7 @@ describe('controllers', function() {
       it('respond with json vehicle not found', function(done) {
 
         request(server)
-          .get('/position/WLQBNAL7EM14E3H')
+          .get('/position/WLQBNAL7EM14E3H?api_key=1234')
           .set('Accept', 'application/json')
           .expect('Content-Type', /json/)
           .expect(404) 

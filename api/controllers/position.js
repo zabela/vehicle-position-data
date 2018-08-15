@@ -39,13 +39,9 @@ function addPosition(req, res) {
     // get the position
     var position = req.swagger.params.position.value;
 
-    // get and add the vehicle id to the position
-
-    // get the data global variable
-    var data = req.app.get('data');
-
+    // get the data global variable and
     // add to the storage
-    data.push(position);
+    req.app.get('data').push(position);
     
     // just to check if it is there
     // to clearly see it use https://jsoneditoronline.org/

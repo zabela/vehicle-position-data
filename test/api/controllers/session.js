@@ -41,7 +41,7 @@ describe('controllers', function() {
       it('respond with json containing a single session', function(done) {
 
         request(server)
-          .get('/session/ef0f515c3b19e177fb67a5b51b736d71')
+          .get('/session/ef0f515c3b19e177fb67a5b51b736d71?api_key=1234')
           .set('Accept', 'application/json')
           .expect('Content-Type', /json/)
           .expect(200)
@@ -58,7 +58,7 @@ describe('controllers', function() {
       it('respond with json session not found', function(done) {
 
         request(server)
-          .get('/session/6bc6a660dfef4010ded079865f358e88')
+          .get('/session/6bc6a660dfef4010ded079865f358e88?api_key=1234')
           .set('Accept', 'application/json')
           .expect('Content-Type', /json/)
           .expect(404) 
@@ -76,7 +76,7 @@ describe('controllers', function() {
       it('respond with json containing a list of all sessions', function(done) {
 
         request(server)
-          .get('/sessions/WLQBNAL7EM14E3N')
+          .get('/sessions/WLQBNAL7EM14E3N?api_key=1234')
           .set('Accept', 'application/json')
           .expect('Content-Type', /json/)
           .expect(200)
@@ -93,7 +93,7 @@ describe('controllers', function() {
       it('respond with json vehicle not found', function(done) {
 
         request(server)
-          .get('/sessions/WLQBNAL7EM14E3H')
+          .get('/sessions/WLQBNAL7EM14E3H?api_key=1234')
           .set('Accept', 'application/json')
           .expect('Content-Type', /json/)
           .expect(404) 
