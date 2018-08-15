@@ -6,7 +6,7 @@ A REST API that can receive, process and store vehicle movement information.
 This is a web service, written in JavaScript, that can receive vehicle position data. This REST interface is designed for communication with the vehicles and communicates via HTTP. 
 Position data is defined by the following attributes:
 
-* timestamp: long (represented in unix epoch: https://www.epochconverter.com/)
+* timestamp: long (represented in [Unix Epoch](https://www.epochconverter.com/)
 * session identifier: string
 * vehicle identifier: string
 * latitude: double
@@ -24,26 +24,33 @@ The web-service also provides APIs to:
 
 A session is defined by an array of position data objects.
 
-For simplicity, these endpoints are protected by a basic authentication method: application programming interface key (API key). Another possible improvement would be using an oauth2 solution, in which an authorization server would come into play. Due to the authentication method chosen and also for clarity, the vehicle identifier is provided in the request body. 
+For simplicity, these endpoints are protected by a basic authentication method: application programming interface key ([API key](https://en.wikipedia.org/wiki/Application_programming_interface_key)). For ease, only one API key is provided for all vehicles. That is definitely not advised for real productive solutions. Another possible improvement would be using an oauth2 solution, in which an authorization server would come into play. Due to the authentication method chosen and also for clarity, the vehicle identifier is provided in the request body. 
 
-Documentation about the URLs to retrieve the data is provided via Swagger UI (https://swagger.io/). This application can be easily deployable and runnable with the following instructions.
+Documentation about the URLs to retrieve the data is provided via [Swagger UI](https://swagger.io/). This application can be easily deployable and runnable with the following instructions.
 
 ## Instructions
 
-* install all dependencies with
+1. Install all dependencies with:
 ```
 npm install
 ```
-* start node app
+⋅⋅* It might be necessary to install swagger globably:
+```
+npm install -g swagger
+```
+2. Start node app:
 ```
 swagger project start
 ```
-* test node app
-```
-swagger project test
-```
-* inject data in form of a shell script using CURL
+⋅⋅* Documentation can be seen under [this URL](http://127.0.0.1:10010/api-docs/#/) (**note:** port `10010` might differ).
+⋅⋅* Authenticatication key value is the same for all vehicles: `1234`.
+
+3. Inject data by running the following shell script:
 ```
 cd data
 sh addData.sh
+```
+4. Test node app:
+```
+swagger project test
 ```

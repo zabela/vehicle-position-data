@@ -2,7 +2,6 @@
 
 var SwaggerExpress = require('swagger-express-mw');
 var app = require('express')();
-var auth = require('basic-auth');
 
 // these variables represent what needs
 // to be stored in a database solution in the future
