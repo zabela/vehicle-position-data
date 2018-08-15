@@ -10,8 +10,6 @@ module.exports = {
 // get the last position of a certain vehicle
 function getLastPosition(req, res) {
 
-    console.log(JSON.stringify(req.swagger));
-
     // get the vehicle id
     var id = req.swagger.params.vehicleId.value;
 
@@ -22,8 +20,8 @@ function getLastPosition(req, res) {
     // otherwise throw a 404
     if (!data.find(x => x.vehicle_id === id)) {
 
-        // Vehicle not found!
-        res.status(404).json('vehicle not found');
+        // vehicle not found
+        res.status(404).json('Vehicle not found!');
         return;
     }
 

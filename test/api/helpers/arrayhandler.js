@@ -44,7 +44,7 @@ describe('helpers', function() {
     it('should filter the array and sort it by timestamp: from the most recent to the oldest', function(done) {
 
       var array = arrayhandler._sortArrayByTimestamp(req, 'vehicle_id', 'WLQBNAL7EM14E3N');
-      
+    
       array.length.should.equal(2);
       array[0].timestamp.should.equal(1519990625885);
       done();

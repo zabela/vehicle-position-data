@@ -30,7 +30,7 @@ paths:
       parameters:
         - name: vehicleId
           in: path
-          description: vehicle identifier
+          description: the vehicle identifier
           required: true
           type: string
       responses:
@@ -39,8 +39,10 @@ paths:
           schema:
             # a pointer to a definition
             $ref: "#/definitions/Position"
-        "400":
-          description: vehicle not found
+        "404":
+          description: Not Found
+          schema:
+            $ref: "#/definitions/ErrorResponse"
         # responses may fall through to errors
         default:
           description: Error
@@ -82,7 +84,7 @@ paths:
       parameters:
         - name: sessionId
           in: path
-          description: session identifier
+          description: the session identifier
           required: true
           type: string
       responses:
@@ -91,8 +93,10 @@ paths:
           schema:
             # a pointer to a definition
             $ref: "#/definitions/Session"
-        "400":
-          description: session not found
+        "404":
+          description: Not Found
+          schema:
+            $ref: "#/definitions/ErrorResponse"
         # responses may fall through to errors
         default:
           description: Error
@@ -109,7 +113,7 @@ paths:
       parameters:
         - name: vehicleId
           in: path
-          description: vehicle identifier
+          description: the vehicle identifier
           required: true
           type: string
       responses:
@@ -118,8 +122,10 @@ paths:
           schema:
             # a pointer to a definition
             $ref: "#/definitions/Session"
-        "400":
-          description: vehicle not found
+        "404":
+          description: Not Found
+          schema:
+            $ref: "#/definitions/ErrorResponse"
         # responses may fall through to errors
         default:
           description: Error

@@ -41,10 +41,32 @@ describe('controllers', function() {
       it('respond with json containing a single session', function(done) {
 
         request(server)
-          .get('/session/6bc6a660dfef4010ded079865f358e30')
+          .get('/session/ef0f515c3b19e177fb67a5b51b736d71')
           .set('Accept', 'application/json')
           .expect('Content-Type', /json/)
-          .expect(200, done);
+          .expect(200)
+          .end(function(err,res){
+
+            // there should be two elements
+            // with session id ef0f515c3b19e177fb67a5b51b736d71
+            // according to data object above
+            res.body.length.should.equal(2);
+            done();
+          });
+      });
+
+      it('respond with json session not found', function(done) {
+
+        request(server)
+          .get('/session/6bc6a660dfef4010ded079865f358e88')
+          .set('Accept', 'application/json')
+          .expect('Content-Type', /json/)
+          .expect(404) 
+          .expect('"Session not found!"') 
+          .end((err) => {
+              if (err) return done(err);
+              done();
+          });
       });
 
     });
@@ -57,7 +79,29 @@ describe('controllers', function() {
           .get('/sessions/WLQBNAL7EM14E3N')
           .set('Accept', 'application/json')
           .expect('Content-Type', /json/)
-          .expect(200, done);
+          .expect(200)
+          .end(function(err,res){
+
+            // there should be two elements
+            // with vehicle id WLQBNAL7EM14E3N
+            // according to data object above
+            res.body.length.should.equal(2);
+            done();
+          });
+      });
+
+      it('respond with json vehicle not found', function(done) {
+
+        request(server)
+          .get('/sessions/WLQBNAL7EM14E3H')
+          .set('Accept', 'application/json')
+          .expect('Content-Type', /json/)
+          .expect(404) 
+          .expect('"Vehicle not found!"') 
+          .end((err) => {
+              if (err) return done(err);
+              done();
+          });
       });
 
     });

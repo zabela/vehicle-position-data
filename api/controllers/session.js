@@ -21,7 +21,7 @@ function getSession(req, res) {
     if (!data.find(x => x.session_id === id)) {
 
         // session not found
-        res.status(404).json('session not found');
+        res.status(404).json('Session not found!');
         return;
     }
 
@@ -47,7 +47,7 @@ function getSessions(req, res) {
     if (!data.find(x => x.vehicle_id === id)) {
 
         // vehicle not found
-        res.status(404).json('vehicle not found');
+        res.status(404).json('Vehicle not found!');
         return;
     }
 
