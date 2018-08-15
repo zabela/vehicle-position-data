@@ -39,6 +39,7 @@ function addPosition(req, res) {
     // get the position
     var position = req.swagger.params.position.value;
 
+    // validate the json properties
     if (!position.timestamp || !position.vehicle_id || !position.lat || 
         !position.lon || !position.heading || !position.session_id) {
         res.status(400).json('Please provide valid a position!');
