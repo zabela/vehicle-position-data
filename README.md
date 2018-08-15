@@ -6,7 +6,7 @@ A REST API that can receive, process and store vehicle movement information.
 This is a web service, written in JavaScript, that can receive vehicle position data. This REST interface is designed for communication with the vehicles and communicates via HTTP. 
 Position data is defined by the following attributes:
 
-* timestamp: long (represented in [Unix Epoch](https://www.epochconverter.com/)
+* timestamp: long (represented in [Unix Epoch](https://www.epochconverter.com/)))
 * session identifier: string
 * vehicle identifier: string
 * latitude: double
@@ -34,16 +34,12 @@ Documentation about the URLs to retrieve the data is provided via [Swagger UI](h
 ```
 npm install
 ```
-⋅⋅* It might be necessary to install swagger globably:
-```
-npm install -g swagger
-```
 2. Start node app:
 ```
-swagger project start
+npm start
 ```
-⋅⋅* Documentation can be seen under [this URL](http://127.0.0.1:10010/api-docs/#/) (**note:** port `10010` might differ).
-⋅⋅* Authenticatication key value is the same for all vehicles: `1234`.
+    * Documentation can be seen under [this URL](http://127.0.0.1:10010/api-docs/#/) (**note:** port `10010` might differ).
+    * Authenticatication key value is the same for all vehicles: `1234`.
 
 3. Inject data by running the following shell script:
 ```
@@ -52,5 +48,5 @@ sh addData.sh
 ```
 4. Test node app:
 ```
-swagger project test
+npm test
 ```
