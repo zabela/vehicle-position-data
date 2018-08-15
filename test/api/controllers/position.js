@@ -10,17 +10,17 @@ describe('controllers', function() {
     const validPosition = {
       "timestamp": 1519990621965,
       "vehicle_id": "WLQBNAL7EM14E3N",
-      "latitude": 48.1167,
-      "longitude": 11.54,
-      "heading": 252,
-      "session_id": "6bc6a660dfef4010ded079865f358e31"
+      "session_id": "6bc6a660dfef4010ded079865f358e31",
+      "lat": 48.1167,
+      "lon": 11.54,
+      "heading": 252
     };
     const invalidPosition = {
       "timestamp": 1519990621965,
-      "latitude": 48.1167,
-      "longitude": 11.54,
-      "heading": 252,
-      "session_id": "6bc6a660dfef4010ded079865f358e31"
+      "session_id": "6bc6a660dfef4010ded079865f358e31",
+      "lat": 48.1167,
+      "lon": 11.54,
+      "heading": 252
     };
 
     beforeEach(function() {

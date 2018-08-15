@@ -220,24 +220,24 @@ definitions:
       vehicle_id:
         description: vehicle identifier
         type: string 
-      latitude:
+      session_id:
+        description: session identifier
+        type: string 
+      lat:
         description: latitude
         type: number
-      longitude:
+      lon:
         description: longitude
         type: number 
       heading:
         description: heading
         type: integer 
-      session_id:
-        description: session identifier
-        type: string 
     example:
       timestamp: 1519990621975
       vehicle_id: "WLQBNAL7EM14E3N"
-      latitude: 48.1167
-      longitude: 11.54
-      heading: 252
       session_id: "6bc6a660dfef4010ded079865f358e30"
+      lat: 48.1167
+      lon: 11.54
+      heading: 252
       
     
