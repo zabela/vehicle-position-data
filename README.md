@@ -38,8 +38,8 @@ npm install
 ```
 npm start
 ```
-    * Documentation can be seen under [this URL](http://127.0.0.1:10010/api-docs/#/) (**note:** port `10010` might differ).
-    * Authenticatication key value is the same for all vehicles: `1234`.
+* Documentation can be seen under [this URL](http://127.0.0.1:10010/api-docs/#/) (**note:** port `10010` might differ).
+* Authenticatication key value is the same for all vehicles: `1234`.
 
 3. Inject data by running the following shell script:
 ```
