@@ -55,6 +55,6 @@ function addPosition(req, res) {
     //console.log(JSON.stringify(req.app.get('data')));
 
     // return nice message
-    res.status(201).json('Successfully added!');
+    res.status(201).json('Successfully added position from vehicle ' + position.vehicle_id);
 }
 

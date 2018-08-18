@@ -5,9 +5,9 @@ var app = require('express')();
 
 // these variables represent what needs
 // to be stored in a database solution in the future
-// (i.e. the data and the api keys - here only one used for sake of simplicity)
+// (i.e. the data and the API keys - here only one used for sake of simplicity)
 var data = [];
-var apiKey = '1234';
+var apiKeys = ['1234', '5678', '9101'];
 
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
@@ -19,6 +19,8 @@ var config = {
   appRoot: __dirname // required config
 };
 
+// important note: API keys without HTTPS are not secure at all 
+// (https://swagger.io/docs/specification/authentication/api-keys/).
 config.swaggerSecurityHandlers = {
   api_key: function (req, authOrSecDef, scopesOrApiKey, cb) {
 
@@ -28,7 +30,7 @@ config.swaggerSecurityHandlers = {
       err.statusCode=401;
       cb(err);
 
-    } else if (apiKey === scopesOrApiKey) {
+    } else if (apiKeys.indexOf(scopesOrApiKey) != -1) {
       // all good
       cb();
     } else {

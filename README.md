@@ -24,7 +24,8 @@ The web-service also provides APIs to:
 
 A session is defined by an array of position data objects.
 
-For simplicity, these endpoints are protected by a basic authentication method: application programming interface key ([API key](https://en.wikipedia.org/wiki/Application_programming_interface_key)). For ease, only one API key is provided for all vehicles. That is definitely not advised for real productive solutions. Another possible improvement would be using an oauth2 solution, in which an authorization server would come into play. Due to the authentication method chosen and also for clarity, the vehicle identifier is provided in the request body. 
+For simplicity, these endpoints are protected by a basic authentication method: application programming interface key ([API key](https://en.wikipedia.org/wiki/Application_programming_interface_key)). For ease, a table (hardcoded array) is provided, where vehicles need their own API key instead of all sharing the same one. That is definitely not advised for real productive solutions. Also bear in mind that API keys without HTTPS are not secure at all (["API key-based authentication is only considered secure if used together with other security mechanisms such as HTTPS/SSL"](https://swagger.io/docs/specification/authentication/api-keys/)). 
+Thus, another important improvement would be opting for an oauth2 solution, in which an authorization server would come into play. Due to the authentication method chosen and also for clarity, the vehicle identifier is provided in the request body. 
 
 Documentation about the URLs to retrieve the data is provided via [Swagger UI](https://swagger.io/). This application can be easily deployable and runnable with the following instructions.
 
@@ -39,7 +40,7 @@ npm install
 npm start
 ```
 * Documentation can be seen under [this URL](http://127.0.0.1:10010/api-docs/#/) (**note:** port `10010` might differ).
-* Authenticatication key value is the same for all vehicles: `1234`.
+* Authenticatication keys for 3 vehicles are provided: `1234`, `5678` and `9101`.
 
 3. Inject data by running the following shell script:
 ```

@@ -5,5 +5,6 @@ while read s
 do
     # !!! please check the port before running the script
     curl -H "Content-Type: application/json" -X POST -d "$s" http://localhost:10010/position?api_key=1234
+    printf "\n" 
 done
 
