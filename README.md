@@ -15,7 +15,7 @@ Position data is defined by the following attributes:
 
 This REST web-service is capable of receiving one position per request. The position data is uploaded for a certain vehicle with identifier vehicle_id. Concurrent uploads by multiple vehicles are supported. 
 
-Persistent storage of these positions is not addressed. Instead, for the sake of simplicity, a global variable is used as internal storage solution. As future extension, one could integrate it with a sql database solution, like postgres. 
+Persistent storage of these positions is not addressed. Instead, for the sake of simplicity, a global variable is used as internal storage solution. As future extension, one could integrate it with a time-series database database solution, like [InfluxDB](https://en.wikipedia.org/wiki/InfluxDB), depending on the end goal. 
 
 The web-service also provides APIs to:
 * get all sessions of a vehicle by timestamps (arranged from the most recent to the oldest)
